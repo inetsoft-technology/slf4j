@@ -256,5 +256,9 @@ public class SizeEstimatorIgnoredLogger extends ClassLoader implements Logger {
         loggerDelegate.error(marker, msg, t);
     }
 
+    public Logger getLogger() {
+        return loggerDelegate;
+    }
+
     private final Logger loggerDelegate;
 }
