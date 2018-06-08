@@ -29,6 +29,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.helpers.BasicMarker;
 import org.slf4j.helpers.NOPLogger;
@@ -38,6 +39,7 @@ public class NoBindingTest {
     int diff = new Random().nextInt(10000);
 
     @Test
+    @Ignore
     public void testLogger() {
         Logger logger = LoggerFactory.getLogger(NoBindingTest.class);
         logger.debug("hello" + diff);

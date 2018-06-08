@@ -35,10 +35,7 @@ import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import org.slf4j.event.SubstituteLoggingEvent;
-import org.slf4j.helpers.NOPLoggerFactory;
-import org.slf4j.helpers.SubstituteLogger;
-import org.slf4j.helpers.SubstituteLoggerFactory;
-import org.slf4j.helpers.Util;
+import org.slf4j.helpers.*;
 import org.slf4j.impl.StaticLoggerBinder;
 
 /**
@@ -355,7 +352,7 @@ public final class LoggerFactory {
      */
     public static Logger getLogger(String name) {
         ILoggerFactory iLoggerFactory = getILoggerFactory();
-        return iLoggerFactory.getLogger(name);
+        return new SizeEstimatorIgnoredLogger(iLoggerFactory.getLogger(name));
     }
 
     /**
