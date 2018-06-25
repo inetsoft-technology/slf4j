@@ -3,11 +3,13 @@ package org.slf4j.helpers;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 
+import java.io.Serializable;
+
 /**
  * Logger wrapper that is not traversed by org.apache.spark.util.SizeEstimator due to it extending ClassLoader.
  * This fixes an issue where the SizeEstimator ends up traversing the entire jvm object space.
  */
-public class SizeEstimatorIgnoredLogger extends ClassLoader implements Logger {
+public class SizeEstimatorIgnoredLogger extends ClassLoader implements Logger, Serializable {
     public SizeEstimatorIgnoredLogger(Logger loggerDelegate) {
         this.loggerDelegate = loggerDelegate;
     }
@@ -261,4 +263,5 @@ public class SizeEstimatorIgnoredLogger extends ClassLoader implements Logger {
     }
 
     private final Logger loggerDelegate;
+    private static final long serialVersionUID = 1L;
 }
